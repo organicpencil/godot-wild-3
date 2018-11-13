@@ -19,6 +19,10 @@ config/name="Godot Wild 3 Jam (Godot 3.1)"
 run/main_scene="res://start.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Orders="*res://orders.gd"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
