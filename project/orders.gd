@@ -29,7 +29,7 @@ var current_order = 0
 func _ready():
 	# Call register_order for each possible order.
 	register_order("A local farmer needs help with a termite problem.", [ING_MUSHROOM], "res://faces/farmer.png")
-	register_order("I require floatation and happiness.", [ING_DANDELION, ING_SEED]) # Face is optional
+	register_order("An angry duck violently charges in, demanding something that will help it float.", [ING_DANDELION, ING_SEED]) # Face is optional
 
 func register_order(message : String, ingredients : Array, face=null):
 	var order = {}
