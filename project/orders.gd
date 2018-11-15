@@ -19,14 +19,14 @@ for ingredient in order['ingredients']:
         Orders.ING_SEED: pass
 """
 
-extends Node
+extends Object
 
 enum {ING_DANDELION, ING_FEATHER, ING_MANDRAKE, ING_MUSHROOM, ING_SEED}
 
 var orders = []
 var current_order = 0
 
-func _ready():
+func _init():
 	# Call register_order for each possible order.
 	register_order("A local farmer needs help with a termite problem.", [ING_MUSHROOM], "res://faces/farmer.png")
 	register_order("An angry duck violently charges in, demanding something that will help it float.", [ING_DANDELION, ING_SEED]) # Face is optional

@@ -24,4 +24,5 @@ text = "Audio"
 flat = true
 align = 0
 script = ExtResource( 1 )
+start_muted = false
 

@@ -1,8 +1,10 @@
 extends Node
 
-var escape_menu_ref
+var orders
 
 func _ready():
+	orders = preload("res://orders.gd").new()
+	
 	$NextOrder.connect("pressed", self, "handle_nextorder_pressed")
 	$BookButton.connect("pressed", self, "handle_bookbutton_pressed")
 	$Timer.connect("timeout", self, "handle_timeout")
@@ -16,7 +18,7 @@ func handle_nextorder_pressed():
 	
 	$NextOrder.hide()
 	
-	var order = Orders.get_next_order()
+	var order = orders.get_next_order()
 	
 	if !order:
 		# Went through all orders. End the game or something

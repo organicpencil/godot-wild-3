@@ -21,7 +21,6 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Orders="*res://orders.gd"
 Global="*res://global.gd"
 
 [display]
