@@ -34,10 +34,12 @@ func fade_in():
 	visible = true
 	active = true
 	$AnimationPlayer.play_backwards("fade")
+	$Close.play()
 	
 func fade_out():
 	active = false
 	$AnimationPlayer.play("fade")#, -1, 1.5)
+	$Open.play()
 	
 func previous_page():
 	if current_page == 1: return
@@ -49,6 +51,8 @@ func previous_page():
 	$nextBtn.show()
 	if current_page == 1: $prevBtn.hide()
 	
+	$PageFlip.play()
+	
 func next_page():
 	if !has_node("page%d" % [current_page + 1]): return
 	
@@ -58,3 +62,5 @@ func next_page():
 	
 	$prevBtn.show()
 	if !has_node("page%d" % [current_page + 1]): $nextBtn.hide()
+	
+	$PageFlip.play()

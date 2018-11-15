@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/New_Order.wav-72adbeb90121a3b755e0dcfb5a561dcd.sample"
+
+[deps]
+
+source_file="res://audio/New_Order.wav"
+dest_files=[ "res://.import/New_Order.wav-72adbeb90121a3b755e0dcfb5a561dcd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

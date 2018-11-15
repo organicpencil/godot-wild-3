@@ -57,7 +57,7 @@ func handle_remove_ingredient(ingredient_id):
 	
 func handle_nextorder_pressed():
 	assert($Timer.is_stopped())
-	
+	$NextOrder/AudioStreamPlayer.play()
 	$NextOrder.hide()
 	
 	current_order = orders.get_next_order()
@@ -94,9 +94,11 @@ func handle_brew_pressed():
 		$ColorRect/Label.text = 'Good job! Hit "Next customer" when you\'re ready for another.'
 		message.text = current_order['good_message']
 		current_order = null
+		$BrewButton/GoodSound.play()
 	else:
 		# Bad potion
 		message.text = current_order['bad_message']
+		$BrewButton/BadSound.play()
 		
 	add_child(message)
 	
