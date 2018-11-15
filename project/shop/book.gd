@@ -13,6 +13,13 @@ func _ready():
 	
 	$prevBtn.hide()
 	
+func _unhandled_input(event):
+	if event.is_action_pressed("next_page"):
+		next_page()
+		
+	if event.is_action_pressed("previous_page"):
+		previous_page()
+	
 func toggle():
 	if active:
 		fade_out()
@@ -33,7 +40,7 @@ func fade_out():
 	$AnimationPlayer.play("fade")#, -1, 1.5)
 	
 func previous_page():
-	assert(current_page != 1)
+	if current_page == 1: return
 	
 	get_node("page%d" % current_page).hide()
 	current_page -= 1
@@ -43,7 +50,7 @@ func previous_page():
 	if current_page == 1: $prevBtn.hide()
 	
 func next_page():
-	assert(has_node("page%d" % [current_page + 1]))
+	if !has_node("page%d" % [current_page + 1]): return
 	
 	get_node("page%d" % current_page).hide()
 	current_page += 1
