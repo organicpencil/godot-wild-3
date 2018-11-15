@@ -60,7 +60,7 @@ func handle_nextorder_pressed():
 	
 	if !current_order:
 		# Went through all orders. End the game or something
-		$ColorRect/Label.text = "Closing time!"
+		$ColorRect/Label.text = "Actually... that's everything. Need to make a win screen or something. Press escape to leave."
 		return
 		
 	# Process the order
@@ -81,16 +81,18 @@ func handle_brew_pressed():
 		
 	$BrewButton.hide()
 	
+	var message = preload("res://shop/message.tscn").instance()
 	if score == current_order['ingredients'].size():
 		# Good potion
 		$Timer.stop()
 		$NextOrder.show()
 		$ColorRect/Label.text = 'Good job! Hit "Next Order" when you\'re ready for another.'
+		message.text = current_order['good_message']
 	else:
 		# Bad potion
-		var message = preload("res://shop/message.tscn").instance()
-		message.text = "The duck is not pleased. Try again."
-		add_child(message)
+		message.text = current_order['bad_message']
+		
+	add_child(message)
 	
 func handle_bookbutton_pressed():
 	$Book.toggle()

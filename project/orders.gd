@@ -25,7 +25,21 @@ var orders = []
 var current_order = 0
 
 func _init():
-	# Call register_order for each possible order.
+	orders.append({	'message': "An angry duck violently charges in, demanding something that will aid with floatation.",
+					'ingredients': [Global.ING_DANDELION, Global.ING_SUNFLOWERSEED],
+					'good_message': "Excellent!", # Could use a generic message instead
+					'bad_message': "The duck is not pleased. Try again.", # Could use a generic message instead
+					'fail_message': "The duck decides to take its business elsewhere." # Could use a generic message instead
+					})
+					
+	orders.append({	'message': 'A huge rat enters the shop. It\'s walking half-sideways while compulsively scratching its cheek. "Hey man... you got something for me?"',
+				'ingredients': [Global.ING_MUSHROOM],
+				'good_message': "Excellent!", # Could use a generic message instead
+				'bad_message': "What? No! Something *else*", # Could use a generic message instead
+				'fail_message': "Before you can finish, the cops arrive and escort the rat outside." # Could use a generic message instead
+				})
+					
+"""
 	register_order("A local farmer needs help with a termite problem.", [Global.ING_MUSHROOM])#, "res://faces/farmer.png")
 	register_order("An angry duck violently charges in, demanding something that will help it float.", [Global.ING_DANDELION, Global.ING_SUNFLOWERSEED]) # Face is optional
 
@@ -40,6 +54,7 @@ func register_order(message : String, ingredients : Array, face=null):
 		order['face'] = null
 		
 	orders.append(order)
+"""
 
 func get_next_order():
 	"""
