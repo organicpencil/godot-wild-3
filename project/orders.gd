@@ -12,24 +12,22 @@ $TextureRect.texture = orders['face'] # Face can be null, should probably handle
 
 for ingredient in order['ingredients']:
     match ingredient:
-        Orders.ING_DANDELION: pass
-        Orders.ING_FEATHER: pass
-        Orders.ING_MANDRAKE: pass
-        Orders.ING_MUSHROOM: pass
-        Orders.ING_SEED: pass
+        Global.ING_DANDELION: pass
+        Global.ING_FEATHER: pass
+        Global.ING_MANDRAKE: pass
+        Global.ING_MUSHROOM: pass
+        Global.ING_SEED: pass
 """
 
 extends Object
-
-enum {ING_DANDELION, ING_FEATHER, ING_MANDRAKE, ING_MUSHROOM, ING_SEED}
 
 var orders = []
 var current_order = 0
 
 func _init():
 	# Call register_order for each possible order.
-	register_order("A local farmer needs help with a termite problem.", [ING_MUSHROOM], "res://faces/farmer.png")
-	register_order("An angry duck violently charges in, demanding something that will help it float.", [ING_DANDELION, ING_SEED]) # Face is optional
+	register_order("A local farmer needs help with a termite problem.", [Global.ING_MUSHROOM])#, "res://faces/farmer.png")
+	register_order("An angry duck violently charges in, demanding something that will help it float.", [Global.ING_DANDELION, Global.ING_SUNFLOWERSEED]) # Face is optional
 
 func register_order(message : String, ingredients : Array, face=null):
 	var order = {}
@@ -49,7 +47,7 @@ func get_next_order():
 	
 	message: Message shown to the player. String.
 	
-	ingredients: Array of integers. Possible values are ING_DANDELION, ING_FEATHER, ING_MANDRAKE, ING_MUSHROOM, ING_SEED.
+	ingredients: Array of integers. Possible values are Global.ING_DANDELION, Global.ING_FEATHER, Global.ING_MANDRAKE, Global.ING_MUSHROOM, Global.ING_SEED.
 	
 	face: Customer's face texture resource. ImageTexture resource or null
 	

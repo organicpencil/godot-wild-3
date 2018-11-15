@@ -1,5 +1,11 @@
 extends Node
 
+enum {ING_DANDELION, ING_FEATHER, ING_MANDRAKE, ING_MUSHROOM, ING_SUNFLOWERSEED}
+
+signal start_game
+signal add_ingredient
+signal remove_ingredient
+
 func _ready():
 	# Deferred rather than autoloaded, prevents music from playing during the initial load
 	call_deferred("add_music_player")
