@@ -36,7 +36,7 @@ func _init():
 				'ingredients': [Global.ING_MUSHROOM],
 				'good_message': "Excellent!", # Could use a generic message instead
 				'bad_message': "What? No! Something *else*", # Could use a generic message instead
-				'fail_message': "Before you can finish, the cops arrive and escort the rat outside." # Could use a generic message instead
+				'fail_message': "The cops show up and take the rat before you can finish." # Could use a generic message instead
 				})
 					
 """

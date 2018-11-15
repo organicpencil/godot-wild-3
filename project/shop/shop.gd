@@ -91,8 +91,9 @@ func handle_brew_pressed():
 		# Good potion
 		$Timer.stop()
 		$NextOrder.show()
-		$ColorRect/Label.text = 'Good job! Hit "Next Order" when you\'re ready for another.'
+		$ColorRect/Label.text = 'Good job! Hit "Next customer" when you\'re ready for another.'
 		message.text = current_order['good_message']
+		current_order = null
 	else:
 		# Bad potion
 		message.text = current_order['bad_message']
@@ -103,8 +104,16 @@ func handle_bookbutton_pressed():
 	$Book.toggle()
 	
 func handle_timeout():
-	$ColorRect/Label.text = "YOU HAVE FAILED TO DELIVER ON TIME"
+	$ColorRect/Label.text = "You ran out of time. Better luck on the next one?"
 	$NextOrder.show()
+	$BrewButton.hide()
+	for node in get_node("../Background/Active").get_children():
+		node.queue_free()
+		
+	var message = preload("res://shop/message.tscn").instance()
+	message.text = current_order['fail_message']
+	add_child(message)
+	current_order = null
 	
 func _process(delta):
 	if !$Timer.is_stopped():

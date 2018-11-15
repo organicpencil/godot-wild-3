@@ -46,7 +46,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Next Order"
+text = "Next customer"
 flat = false
 align = 1
 
@@ -159,7 +159,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Hi there!
-Press \"Next Order\" when ready...
+Press \"Next customer\" when ready...
 Although it might be a good idea to study first (top left)"
 autowrap = true
 percent_visible = 1.0
