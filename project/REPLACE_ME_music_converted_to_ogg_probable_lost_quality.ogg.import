@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/REPLACE_ME_music_converted_to_ogg_probable_lost_quality.ogg-48f931e37aa32ac833b3077177467d01.oggstr"
+
+[deps]
+
+source_file="res://REPLACE_ME_music_converted_to_ogg_probable_lost_quality.ogg"
+dest_files=[ "res://.import/REPLACE_ME_music_converted_to_ogg_probable_lost_quality.ogg-48f931e37aa32ac833b3077177467d01.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
