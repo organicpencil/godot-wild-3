@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://shop/shop.gd" type="Script" id=1]
 [ext_resource path="res://shop/book4.png" type="Texture" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://shop/book.tscn" type="PackedScene" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=5]
 [ext_resource path="res://menu/escape_menu.tscn" type="PackedScene" id=6]
-[ext_resource path="res://menu/escape_menu.gd" type="Script" id=7]
 
 [node name="Shop" type="Control"]
 anchor_left = 0.0
@@ -52,14 +51,13 @@ flat = false
 align = 1
 
 [node name="BrewButton" type="Button" parent="."]
-visible = false
-anchor_left = 0.0
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 900.0
+margin_left = -124.0
 margin_top = -72.0
-margin_right = 1013.0
+margin_right = -11.0
 margin_bottom = -10.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -191,19 +189,9 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="EscapeMenu" type="Control" parent="." instance=ExtResource( 6 )]
+[node name="EscapeMenu" parent="." instance=ExtResource( 6 )]
 visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-script = ExtResource( 7 )
 
 [node name="ActiveIngredients" type="HBoxContainer" parent="."]
 anchor_left = 0.0

@@ -31,7 +31,8 @@ func handle_add_ingredient(ingredient_id):
 		return
 		
 	# Make sure we don't already have this ingredient in the cauldron
-	for child in $ActiveIngredients.get_children():
+	#for child in $ActiveIngredients.get_children():
+	for child in get_node("../Background/Active").get_children():
 		if child.ingredient_id == ingredient_id:
 			return
 	
@@ -44,11 +45,14 @@ func handle_add_ingredient(ingredient_id):
 		Global.ING_SUNFLOWERSEED: node = preload("res://ingredients/sunflower_seed.tscn").instance()
 		
 	node.active_mode = true
-	$ActiveIngredients.add_child(node)
+	#$ActiveIngredients.add_child(node)
+	# Ooooh boy
+	get_node("../Background/Active").add_child(node)
 	$BrewButton.show()
 	
 func handle_remove_ingredient(ingredient_id):
-	if $ActiveIngredients.get_child_count() == 0:
+	#if $ActiveIngredients.get_child_count() == 0:
+	if get_node("../Background/Active").get_child_count() == 0:
 		$BrewButton.hide()
 	
 func handle_nextorder_pressed():
@@ -71,7 +75,8 @@ func handle_nextorder_pressed():
 	
 func handle_brew_pressed():
 	var score = 0
-	for node in $ActiveIngredients.get_children():
+	#for node in $ActiveIngredients.get_children():
+	for node in get_node("../Background/Active").get_children():
 		if node.ingredient_id in current_order['ingredients']:
 			score += 1
 		else:
