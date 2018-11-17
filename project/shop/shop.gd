@@ -1,6 +1,7 @@
 extends Control
 
 export(NodePath) var potion_sprite
+export(NodePath) var stop_hover
 
 var orders
 var current_order = null
@@ -9,8 +10,9 @@ var satisifed_customers = 0
 var ingredients_wasted = 0
 
 func _ready():
-	potion_sprite = get_node(potion_sprite)
 	orders = preload("res://orders.gd").new()
+	potion_sprite = get_node(potion_sprite)
+	stop_hover = get_node(stop_hover)
 	
 	Global.connect("start_game", self, "handle_start_game")
 	
@@ -56,6 +58,7 @@ func handle_add_ingredient(ingredient_id, mix_color):
 		Global.ING_SUNFLOWERSEED: node = preload("res://ingredients/sunflower_seed.tscn").instance()
 		
 	node.active_mode = true
+	node.texture_hover = null
 	# This hurts
 	get_node("../Background/Active").add_child(node)
 	
@@ -83,9 +86,9 @@ func handle_nextorder_pressed():
 		
 	# Process the order
 	$ColorRect/Label.text = current_order['message']
-	
 	$Timer.wait_time = 30.0
 	$Timer.start()
+	stop_hover.hide()
 	
 func handle_brew_pressed():
 	var score = 0
@@ -115,6 +118,8 @@ func handle_brew_pressed():
 			$ColorRect/Label.text = 'Good job! Hit "Next customer" when you\'re ready for another.'
 		else:
 			game_over()
+			
+		stop_hover.show()
 		
 	else:
 		# Bad potion
@@ -139,6 +144,8 @@ func handle_timeout():
 	message.text = current_order['fail_message']
 	add_child(message)
 	current_order = null
+	
+	stop_hover.show()
 	
 func game_over():
 	$ColorRect/Label.text = 'Looks like that\'s everyone!\nSatisfied customers: %d/%d\nWasted ingredients: %d' % \
