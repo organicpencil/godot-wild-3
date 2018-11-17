@@ -8,7 +8,6 @@ if !order:
     return
 
 $Label.text = order['message']
-$TextureRect.texture = orders['face'] # Face can be null, should probably handle that
 
 for ingredient in order['ingredients']:
     match ingredient:
@@ -25,6 +24,60 @@ var orders = []
 var current_order = 0
 
 func _init():
+	normal_orders()
+	#alternative_orders()
+	
+func normal_orders():
+	orders.append({	'message': "A villager steps up, complaining about insomina.",
+					'ingredients': [Global.ING_MANDRAKE],
+					'good_message': "Excellent!", # Could use a generic message instead
+					'bad_message': "That doesn't smell right.", # Could use a generic message instead
+					'fail_message': "The villager walks out. \"I'll just live with it.\"" # Could use a generic message instead
+					})
+					
+	orders.append({	'message': "A distressed young person is worried their lover has turned into a frog.",
+					'ingredients': [Global.ING_FEATHER],
+					'good_message': "Excellent!", # Could use a generic message instead
+					'bad_message': "It didn't work.", # Could use a generic message instead
+					'fail_message': "The frog wriggles free and makes a daring jump for the window." # Could use a generic message instead
+					})
+					
+	orders.append({	'message': "An elderly person enters the shop, seeking youth and good health.",
+					'ingredients': [Global.ING_DANDELION, Global.ING_MANDRAKE],
+					'good_message': "Excellent!", # Could use a generic message instead
+					'bad_message': "Nope, that just made it worse.", # Could use a generic message instead
+					'fail_message': "The client leaves, dissatisfied." # Could use a generic message instead
+					})
+					
+	orders.append({	'message': "A local ranger asks you to poison some arrows.",
+					'ingredients': [Global.ING_MANDRAKE, Global.ING_MUSHROOM],
+					'good_message': "Excellent!", # Could use a generic message instead
+					'bad_message': "That doesn't smell right.", # Could use a generic message instead
+					'fail_message': "The ranger leaves before you can finish." # Could use a generic message instead
+					})
+					
+	orders.append({	'message': "A local warrior requires a strength and resistance boost for an upcoming dragon-slaying event.",
+					'ingredients': [Global.ING_FEATHER, Global.ING_DANDELION],
+					'good_message': "Excellent!", # Could use a generic message instead
+					'bad_message': "That doesn't smell right.", # Could use a generic message instead
+					'fail_message': "The warrior leaves before you can finish." # Could use a generic message instead
+					})
+					
+	orders.append({	'message': "A worried person tells you their mother is suffering from hypothermia.",
+					'ingredients': [Global.ING_SUNFLOWERSEED, Global.ING_MANDRAKE],
+					'good_message': "Excellent!", # Could use a generic message instead
+					'bad_message': "That doesn't smell right.", # Could use a generic message instead
+					'fail_message': "The person walks out. \"I'll just take her to the doctor.\"" # Could use a generic message instead
+					})
+					
+	orders.append({	'message': "A local druid wants to tame a baby dragon and needs to make sure it won't attack in the process.",
+					'ingredients': [Global.ING_DANDELION, Global.ING_SUNFLOWERSEED],
+					'good_message': "Excellent!", # Could use a generic message instead
+					'bad_message': "That doesn't smell right.", # Could use a generic message instead
+					'fail_message': "The druid walks out, grasping is club. \"Look's like I'll have to do this the old-fashioned way.\"" # Could use a generic message instead
+					})
+	
+func alternative_orders():
 	orders.append({	'message': "An angry duck violently waddles in, demanding something that will aid with floatation.",
 					'ingredients': [Global.ING_DANDELION, Global.ING_SUNFLOWERSEED],
 					'good_message': "Excellent!", # Could use a generic message instead
@@ -38,23 +91,6 @@ func _init():
 				'bad_message': "What? No! Something *else*", # Could use a generic message instead
 				'fail_message': "The cops show up and take the rat before you can finish." # Could use a generic message instead
 				})
-					
-"""
-	register_order("A local farmer needs help with a termite problem.", [Global.ING_MUSHROOM])#, "res://faces/farmer.png")
-	register_order("An angry duck violently charges in, demanding something that will help it float.", [Global.ING_DANDELION, Global.ING_SUNFLOWERSEED]) # Face is optional
-
-func register_order(message : String, ingredients : Array, face=null):
-	var order = {}
-	order['message'] = message
-	#order['message_key'] = message_key # Translations
-	order['ingredients'] = ingredients
-	if face:
-		order['face'] = load(face)
-	else:
-		order['face'] = null
-		
-	orders.append(order)
-"""
 
 func get_next_order():
 	"""
