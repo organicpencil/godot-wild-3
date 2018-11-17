@@ -17,4 +17,4 @@ func handle_button_pressed():
 	else:
 	"""
 	if !active_mode:
-		Global.emit_signal("add_ingredient", ingredient_id, mix_color)
+		Global.emit_signal("add_ingredient", self)

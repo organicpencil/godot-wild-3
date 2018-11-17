@@ -9,12 +9,15 @@ var current_order = null
 
 var satisifed_customers = 0
 var ingredients_wasted = 0
+var money = 0
 
 func _ready():
 	orders = preload("res://orders.gd").new()
 	potion_sprite = get_node(potion_sprite)
 	stop_hover = get_node(stop_hover)
 	witch = get_node(witch)
+	
+	set_money(100)
 	
 	Global.connect("start_game", self, "handle_start_game")
 	
@@ -25,6 +28,16 @@ func _ready():
 	$MenuButton.connect("pressed", self, "handle_exit_pressed")
 	
 	set_process_input(false)
+	
+func set_money(amount):
+	money = amount
+	
+	var moneycolor = "lime"
+	if money < 0:
+		moneycolor = "red"
+		
+	$MoneyLabel.bbcode_text = "Currency units: [color=%s]%s[/color]" % [moneycolor, str(money)]
+	print($MoneyLabel.text)
 	
 func _input(event):
 	if event.is_action_pressed("escape"):
@@ -39,7 +52,7 @@ func handle_start_game():
 func handle_exit_pressed():
 	get_tree().change_scene("res://start.tscn")
 	
-func handle_add_ingredient(ingredient_id, mix_color):
+func handle_add_ingredient(ingredient_node):
 	# Active order required before you can start mixing
 	if !current_order:
 		return
@@ -47,14 +60,22 @@ func handle_add_ingredient(ingredient_id, mix_color):
 	# Make sure we don't already have this ingredient in the cauldron
 	#for child in $ActiveIngredients.get_children():
 	for child in get_node("../Active").get_children():
-		if child.ingredient_id == ingredient_id:
+		if child.ingredient_id == ingredient_node.ingredient_id:
 			return
 			
 	$IngredientClick.play()
 	
+	set_money(money - 10)
+	
+	var message = preload("res://shop/message.tscn").instance()
+	message.text = "-10"
+	message.speed = 3.0
+	message.get_node("Coin").show()
+	get_parent().add_child(message)
+	
 	# Replaced with color mixing
 	var node
-	match ingredient_id:
+	match ingredient_node.ingredient_id:
 		Global.ING_DANDELION: node = preload("res://ingredients/dandelion.tscn").instance()
 		Global.ING_FEATHER: node = preload("res://ingredients/feather.tscn").instance()
 		Global.ING_MANDRAKE: node = preload("res://ingredients/mandrake.tscn").instance()
@@ -74,7 +95,7 @@ func handle_add_ingredient(ingredient_id, mix_color):
 	# This hurts
 	get_node("../Active").add_child(node)
 	
-	potion_sprite.modulate *= mix_color
+	potion_sprite.modulate *= ingredient_node.mix_color
 	
 	$BrewButton.show()
 	
@@ -121,21 +142,29 @@ func handle_brew_pressed():
 	var message = preload("res://shop/message.tscn").instance()
 	if score == current_order['ingredients'].size():
 		# Good potion
+		var money_delta = 20 * score
+		set_money(money + money_delta)
 		$Timer.stop()
-		message.text = current_order['good_message']
+		message.text = current_order['good_message'] + " (+%d)" % [money_delta]
+		message.get_node("Coin").show()
 		current_order = null
 		$BrewButton/GoodSound.play()
 		
 		satisifed_customers += 1
 		
 		if orders.current_order < orders.orders.size():
-			$NextOrder.show()
-			$ColorRect/Label.text = 'Good job! Hit "Next customer" when you\'re ready for another.'
+			if money >= 0:
+				$NextOrder.show()
+				$ColorRect/Label.text = 'Good job! Hit "Next customer" when you\'re ready for another.'
+				witch.get_node("AnimationPlayer").play("happy")
+			else:
+				$ColorRect/Label.text = 'The customer has been satisfied. Unfortunately, you\'ve accumulated too much debt to keep the shop open.'
+				$MenuButton.show()
 		else:
 			game_over()
+			witch.get_node("AnimationPlayer").play("happy")
 			
 		stop_hover.show()
-		witch.get_node("AnimationPlayer").play("happy")
 		potion_sprite.hide()
 		
 	else:
