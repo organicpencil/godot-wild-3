@@ -2,6 +2,7 @@ extends Control
 
 export(NodePath) var potion_sprite
 export(NodePath) var stop_hover
+export(NodePath) var witch
 
 var orders
 var current_order = null
@@ -13,6 +14,7 @@ func _ready():
 	orders = preload("res://orders.gd").new()
 	potion_sprite = get_node(potion_sprite)
 	stop_hover = get_node(stop_hover)
+	witch = get_node(witch)
 	
 	Global.connect("start_game", self, "handle_start_game")
 	
@@ -76,6 +78,7 @@ func handle_nextorder_pressed():
 	$NextOrder/AudioStreamPlayer.play()
 	$NextOrder.hide()
 	potion_sprite.modulate = Color(1, 1, 1, 1)
+	witch.get_node("AnimationPlayer").play("normal")
 	
 	current_order = orders.get_next_order()
 	
@@ -120,6 +123,7 @@ func handle_brew_pressed():
 			game_over()
 			
 		stop_hover.show()
+		witch.get_node("AnimationPlayer").play("happy")
 		
 	else:
 		# Bad potion
@@ -127,6 +131,7 @@ func handle_brew_pressed():
 		$BrewButton/BadSound.play()
 		
 		ingredients_wasted += ingredient_count
+		#witch.get_node("AnimationPlayer").play("confused")
 		
 	add_child(message)
 	
@@ -146,6 +151,7 @@ func handle_timeout():
 	current_order = null
 	
 	stop_hover.show()
+	witch.get_node("AnimationPlayer").play("confused")
 	
 func game_over():
 	$ColorRect/Label.text = 'Looks like that\'s everyone!\nSatisfied customers: %d/%d\nWasted ingredients: %d' % \

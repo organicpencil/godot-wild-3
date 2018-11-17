@@ -259,4 +259,5 @@ margin_right = 0.0
 visible = false
 potion_sprite = NodePath("../Background/Potion")
 stop_hover = NodePath("../StopHover")
+witch = NodePath("../Background/Witch")
 
