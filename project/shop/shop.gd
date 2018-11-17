@@ -1,5 +1,7 @@
 extends Control
 
+export(NodePath) var potion_sprite
+
 var orders
 var current_order = null
 
@@ -7,6 +9,7 @@ var satisifed_customers = 0
 var ingredients_wasted = 0
 
 func _ready():
+	potion_sprite = get_node(potion_sprite)
 	orders = preload("res://orders.gd").new()
 	
 	Global.connect("start_game", self, "handle_start_game")
@@ -32,7 +35,7 @@ func handle_start_game():
 func handle_exit_pressed():
 	get_tree().change_scene("res://start.tscn")
 	
-func handle_add_ingredient(ingredient_id):
+func handle_add_ingredient(ingredient_id, mix_color):
 	# Active order required before you can start mixing
 	if !current_order:
 		return
@@ -42,7 +45,8 @@ func handle_add_ingredient(ingredient_id):
 	for child in get_node("../Background/Active").get_children():
 		if child.ingredient_id == ingredient_id:
 			return
-	
+			
+	# Replaced with color mixing
 	var node
 	match ingredient_id:
 		Global.ING_DANDELION: node = preload("res://ingredients/dandelion.tscn").instance()
@@ -52,9 +56,11 @@ func handle_add_ingredient(ingredient_id):
 		Global.ING_SUNFLOWERSEED: node = preload("res://ingredients/sunflower_seed.tscn").instance()
 		
 	node.active_mode = true
-	#$ActiveIngredients.add_child(node)
-	# Ooooh boy
+	# This hurts
 	get_node("../Background/Active").add_child(node)
+	
+	potion_sprite.modulate *= mix_color
+	
 	$BrewButton.show()
 	
 func handle_remove_ingredient(ingredient_id):
@@ -66,6 +72,7 @@ func handle_nextorder_pressed():
 	assert($Timer.is_stopped())
 	$NextOrder/AudioStreamPlayer.play()
 	$NextOrder.hide()
+	potion_sprite.modulate = Color(1, 1, 1, 1)
 	
 	current_order = orders.get_next_order()
 	

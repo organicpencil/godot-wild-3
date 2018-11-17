@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://start.gd" type="Script" id=1]
 [ext_resource path="res://shop/bg.png" type="Texture" id=2]
@@ -9,10 +9,12 @@
 [ext_resource path="res://ingredients/mushroom.tscn" type="PackedScene" id=7]
 [ext_resource path="res://ingredients/sunflower_seed.tscn" type="PackedScene" id=8]
 [ext_resource path="res://shop/witch.tscn" type="PackedScene" id=9]
-[ext_resource path="res://title_font.tres" type="DynamicFont" id=10]
-[ext_resource path="res://body_font.tres" type="DynamicFont" id=11]
-[ext_resource path="res://menu/audio_button.tscn" type="PackedScene" id=12]
-[ext_resource path="res://shop/shop.tscn" type="PackedScene" id=13]
+[ext_resource path="res://shop/potion.png" type="Texture" id=10]
+[ext_resource path="res://shop/mixer.png" type="Texture" id=11]
+[ext_resource path="res://title_font.tres" type="DynamicFont" id=12]
+[ext_resource path="res://body_font.tres" type="DynamicFont" id=13]
+[ext_resource path="res://menu/audio_button.tscn" type="PackedScene" id=14]
+[ext_resource path="res://shop/shop.tscn" type="PackedScene" id=15]
 
 [node name="Start" type="Control"]
 anchor_left = 0.0
@@ -53,53 +55,62 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 2
+mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
 [node name="Dandelion" parent="Background/Ingredients" instance=ExtResource( 4 )]
-margin_left = 213.0
-margin_top = -384.0
-margin_right = 277.0
-margin_bottom = -320.0
+margin_left = -354.0
+margin_top = -484.0
+margin_right = -256.0
+margin_bottom = -312.0
 
 [node name="Feather" parent="Background/Ingredients" instance=ExtResource( 5 )]
-margin_left = 313.0
-margin_top = -384.0
-margin_right = 377.0
-margin_bottom = -320.0
+margin_left = 513.0
+margin_top = -467.0
+margin_right = 670.0
+margin_bottom = -279.0
 
 [node name="Mandrake" parent="Background/Ingredients" instance=ExtResource( 6 )]
-margin_left = 423.0
-margin_top = -385.0
-margin_right = 487.0
-margin_bottom = -321.0
+margin_left = -520.0
+margin_top = -50.0
+margin_right = -325.0
+margin_bottom = 309.0
 
 [node name="Mushroom" parent="Background/Ingredients" instance=ExtResource( 7 )]
-margin_left = 529.0
-margin_top = -384.0
-margin_right = 593.0
-margin_bottom = -320.0
+margin_left = 296.0
+margin_top = -450.0
+margin_right = 445.0
+margin_bottom = -303.0
 
 [node name="SunflowerSeed" parent="Background/Ingredients" instance=ExtResource( 8 )]
-margin_left = 646.0
-margin_top = -384.0
-margin_right = 710.0
-margin_bottom = -320.0
+margin_left = 630.0
+margin_top = 100.0
+margin_right = 794.0
+margin_bottom = 319.0
 
 [node name="Witch" parent="Background" instance=ExtResource( 9 )]
+position = Vector2( 0, -135 )
+
+[node name="Potion" type="Sprite" parent="Background"]
+position = Vector2( 408.667, 91 )
+texture = ExtResource( 10 )
+
+[node name="Mixer" type="Sprite" parent="Background"]
+position = Vector2( 412, 116 )
+texture = ExtResource( 11 )
 
 [node name="Active" type="HBoxContainer" parent="Background"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 230.0
-margin_top = 276.0
-margin_right = 294.0
-margin_bottom = 340.0
-rect_scale = Vector2( 1.5, 1.5 )
+margin_left = -820.0
+margin_top = -200.0
+margin_right = -756.0
+margin_bottom = -136.0
+rect_scale = Vector2( 0.5, 0.5 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -137,7 +148,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 10 )
+custom_fonts/font = ExtResource( 12 )
 text = "-Game Title-"
 autowrap = true
 percent_visible = 1.0
@@ -159,7 +170,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 13 )
 text = "How to play:
 1. Determine customer needs
 2. Add ingredients
@@ -226,12 +237,13 @@ text = "Exit"
 flat = false
 align = 1
 
-[node name="AudioButton" parent="Menu" instance=ExtResource( 12 )]
+[node name="AudioButton" parent="Menu" instance=ExtResource( 14 )]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -117.0
 margin_right = 0.0
 
-[node name="Shop" parent="." instance=ExtResource( 13 )]
+[node name="Shop" parent="." instance=ExtResource( 15 )]
 visible = false
+potion_sprite = NodePath("../Background/Potion")
 
