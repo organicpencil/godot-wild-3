@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://ingredients/mandrake.gd" type="Script" id=1]
-[ext_resource path="res://ingredients/mandrake.png" type="Texture" id=2]
-[ext_resource path="res://ingredients/mandrake_hoover.png" type="Texture" id=3]
+[ext_resource path="res://ingredients/mandrake-normal.png" type="Texture" id=2]
+[ext_resource path="res://ingredients/mandrake-normal-hoover.png" type="Texture" id=3]
 [ext_resource path="res://audio/Mandrake_v2_short.wav" type="AudioStream" id=4]
 
 [node name="Mandrake" type="Control"]
