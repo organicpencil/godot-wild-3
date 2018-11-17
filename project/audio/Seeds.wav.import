@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Seeds.wav-4bcdbdad1f5858ab580dd9d4f7c1f6f4.sample"
+
+[deps]
+
+source_file="res://audio/Seeds.wav"
+dest_files=[ "res://.import/Seeds.wav-4bcdbdad1f5858ab580dd9d4f7c1f6f4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

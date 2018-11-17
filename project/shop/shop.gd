@@ -63,8 +63,8 @@ func handle_add_ingredient(ingredient_node):
 		if child.ingredient_id == ingredient_node.ingredient_id:
 			return
 			
-	$IngredientClick.play()
-	$IngredientClick2.play()
+	$IngredientClick.play() # Money sound
+	#$IngredientClick2.play() # Gurgle sound
 	
 	if ingredient_node.has_node("AudioStreamPlayer"):
 		ingredient_node.get_node("AudioStreamPlayer").play()
@@ -158,9 +158,9 @@ func handle_brew_pressed():
 		
 		if orders.current_order < orders.orders.size():
 			if money >= 0:
-				$NextOrder.show()
 				$ColorRect/Label.text = 'Good job! Hit "Next customer" when you\'re ready for another.'
 				witch.get_node("AnimationPlayer").play("happy")
+				$NextOrder.show()
 			else:
 				$ColorRect/Label.text = 'The customer has been satisfied. Unfortunately, you\'ve accumulated too much debt to keep the shop open.'
 				$MenuButton.show()
@@ -185,9 +185,20 @@ func handle_bookbutton_pressed():
 	$Book.toggle()
 	
 func handle_timeout():
-	$ColorRect/Label.text = "You ran out of time. Better luck on the next one?"
-	$NextOrder.show()
+	if orders.current_order < orders.orders.size():
+		if money >= 0:
+			$ColorRect/Label.text = "You ran out of time. Better luck on the next one?"
+			$NextOrder.show()
+		else:
+			$ColorRect/Label.text = 'You ran out of time. Unfortunately, you\'ve accumulated too much debt to keep the shop open.'
+			$MenuButton.show()
+			
+	else:
+		game_over()
+		
 	$BrewButton.hide()
+	stop_hover.show()
+	
 	for node in get_node("../Active").get_children():
 		node.queue_free()
 		

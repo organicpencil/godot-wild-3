@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Feather.wav-87ae8e6b4ccfae9dbf2b436b2d29d64c.sample"
+
+[deps]
+
+source_file="res://audio/Feather.wav"
+dest_files=[ "res://.import/Feather.wav-87ae8e6b4ccfae9dbf2b436b2d29d64c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
