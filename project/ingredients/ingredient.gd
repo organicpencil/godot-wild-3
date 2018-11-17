@@ -1,4 +1,4 @@
-extends TextureButton
+extends Control
 
 var mix_color
 var ingredient_id
@@ -6,8 +6,9 @@ var active_mode = false
 
 func _ready():
 	assert(ingredient_id != null)
+	$TextureButton.connect("pressed", self, "handle_button_pressed")
 	
-func _pressed():
+func handle_button_pressed():
 	"""
 	if active_mode:
 		Global.emit_signal("remove_ingredient", ingredient_id)

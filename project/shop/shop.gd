@@ -46,7 +46,7 @@ func handle_add_ingredient(ingredient_id, mix_color):
 		
 	# Make sure we don't already have this ingredient in the cauldron
 	#for child in $ActiveIngredients.get_children():
-	for child in get_node("../Background/Active").get_children():
+	for child in get_node("../Active").get_children():
 		if child.ingredient_id == ingredient_id:
 			return
 			
@@ -59,10 +59,18 @@ func handle_add_ingredient(ingredient_id, mix_color):
 		Global.ING_MUSHROOM: node = preload("res://ingredients/mushroom.tscn").instance()
 		Global.ING_SUNFLOWERSEED: node = preload("res://ingredients/sunflower_seed.tscn").instance()
 		
+	# WORKAROUND: HBoxContainer doesn't work when children are Control, needed for bottom-alignment
+	var active_container = get_node("../Active")
+	var offset = Vector2()
+	if active_container.get_child_count() > 0:
+		var last = active_container.get_child(active_container.get_child_count() - 1)
+		offset.x = last.rect_size.x + last.rect_position.x + 8
+		
+	node.rect_position = offset
 	node.active_mode = true
-	node.texture_hover = null
+	node.get_node("TextureButton").texture_hover = null
 	# This hurts
-	get_node("../Background/Active").add_child(node)
+	get_node("../Active").add_child(node)
 	
 	potion_sprite.modulate *= mix_color
 	
@@ -70,7 +78,7 @@ func handle_add_ingredient(ingredient_id, mix_color):
 	
 func handle_remove_ingredient(ingredient_id):
 	#if $ActiveIngredients.get_child_count() == 0:
-	if get_node("../Background/Active").get_child_count() == 0:
+	if get_node("../Active").get_child_count() == 0:
 		$BrewButton.hide()
 	
 func handle_nextorder_pressed():
@@ -95,8 +103,8 @@ func handle_nextorder_pressed():
 	
 func handle_brew_pressed():
 	var score = 0
-	var ingredient_count = get_node("../Background/Active").get_child_count()
-	for node in get_node("../Background/Active").get_children():
+	var ingredient_count = get_node("../Active").get_child_count()
+	for node in get_node("../Active").get_children():
 		if node.ingredient_id in current_order['ingredients']:
 			score += 1
 		else:
@@ -142,7 +150,7 @@ func handle_timeout():
 	$ColorRect/Label.text = "You ran out of time. Better luck on the next one?"
 	$NextOrder.show()
 	$BrewButton.hide()
-	for node in get_node("../Background/Active").get_children():
+	for node in get_node("../Active").get_children():
 		node.queue_free()
 		
 	var message = preload("res://shop/message.tscn").instance()
