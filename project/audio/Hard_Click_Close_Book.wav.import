@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Hard_Click_Close_Book.wav-2d53c8e7fc7574a6edd13f73f2732990.sample"
+
+[deps]
+
+source_file="res://audio/Hard_Click_Close_Book.wav"
+dest_files=[ "res://.import/Hard_Click_Close_Book.wav-2d53c8e7fc7574a6edd13f73f2732990.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

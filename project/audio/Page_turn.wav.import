@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Page_turn.wav-ed789be7e4a9961d310693f8cf155842.sample"
+
+[deps]
+
+source_file="res://audio/Page_turn.wav"
+dest_files=[ "res://.import/Page_turn.wav-ed789be7e4a9961d310693f8cf155842.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

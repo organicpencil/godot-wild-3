@@ -1,14 +1,17 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://shop/book.png" type="Texture" id=1]
 [ext_resource path="res://shop/book.gd" type="Script" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://shop/book2.png" type="Texture" id=4]
 [ext_resource path="res://shop/book3.png" type="Texture" id=5]
-[ext_resource path="res://shop/previous.png" type="Texture" id=6]
-[ext_resource path="res://shop/previous2.png" type="Texture" id=7]
-[ext_resource path="res://shop/next.png" type="Texture" id=8]
-[ext_resource path="res://shop/next2.png" type="Texture" id=9]
+[ext_resource path="res://audio/clicker.tscn" type="PackedScene" id=6]
+[ext_resource path="res://audio/Hard_Click_Close_Book.wav" type="AudioStream" id=7]
+[ext_resource path="res://shop/previous.png" type="Texture" id=8]
+[ext_resource path="res://shop/previous2.png" type="Texture" id=9]
+[ext_resource path="res://audio/Page_turn.wav" type="AudioStream" id=10]
+[ext_resource path="res://shop/next.png" type="Texture" id=11]
+[ext_resource path="res://shop/next2.png" type="Texture" id=12]
 
 [sub_resource type="Animation" id=1]
 
@@ -228,6 +231,10 @@ texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 4 )
 texture_hover = ExtResource( 5 )
 
+[node name="Clicker" parent="closeBtn" instance=ExtResource( 6 )]
+stream = ExtResource( 7 )
+volume_db = -10.0
+
 [node name="prevBtn" type="TextureButton" parent="."]
 anchor_left = 0.0
 anchor_top = 1.0
@@ -248,9 +255,13 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 6 )
-texture_hover = ExtResource( 7 )
+texture_normal = ExtResource( 8 )
+texture_hover = ExtResource( 9 )
 stretch_mode = 3
+
+[node name="Clicker" parent="prevBtn" instance=ExtResource( 6 )]
+stream = ExtResource( 10 )
+volume_db = -5.0
 
 [node name="nextBtn" type="TextureButton" parent="."]
 anchor_left = 1.0
@@ -272,9 +283,13 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 8 )
-texture_hover = ExtResource( 9 )
+texture_normal = ExtResource( 11 )
+texture_hover = ExtResource( 12 )
 stretch_mode = 3
+
+[node name="Clicker" parent="nextBtn" instance=ExtResource( 6 )]
+stream = ExtResource( 10 )
+volume_db = -5.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("..")

@@ -1,18 +1,21 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://shop/shop.gd" type="Script" id=1]
 [ext_resource path="res://audio/New_Order.wav" type="AudioStream" id=2]
 [ext_resource path="res://audio/Cash_Lost.wav" type="AudioStream" id=3]
-[ext_resource path="res://audio/New_Customer.wav" type="AudioStream" id=4]
-[ext_resource path="res://audio/Potion_ready_v2.wav" type="AudioStream" id=5]
-[ext_resource path="res://audio/Cash_Gained.wav" type="AudioStream" id=6]
-[ext_resource path="res://body_font.tres" type="DynamicFont" id=7]
-[ext_resource path="res://shop/book4.png" type="Texture" id=8]
-[ext_resource path="res://shop/book5.png" type="Texture" id=9]
-[ext_resource path="res://shop/book.tscn" type="PackedScene" id=10]
-[ext_resource path="res://icon.png" type="Texture" id=11]
-[ext_resource path="res://timer_font.tres" type="DynamicFont" id=12]
-[ext_resource path="res://menu/escape_menu.tscn" type="PackedScene" id=13]
+[ext_resource path="res://audio/Use_Ingredient.wav" type="AudioStream" id=4]
+[ext_resource path="res://audio/New_Customer.wav" type="AudioStream" id=5]
+[ext_resource path="res://audio/Potion_ready_v2.wav" type="AudioStream" id=6]
+[ext_resource path="res://audio/Cash_Gained.wav" type="AudioStream" id=7]
+[ext_resource path="res://body_font.tres" type="DynamicFont" id=8]
+[ext_resource path="res://shop/book4.png" type="Texture" id=9]
+[ext_resource path="res://shop/book5.png" type="Texture" id=10]
+[ext_resource path="res://audio/clicker.tscn" type="PackedScene" id=11]
+[ext_resource path="res://audio/Hard_Click_Close_Book.wav" type="AudioStream" id=12]
+[ext_resource path="res://shop/book.tscn" type="PackedScene" id=13]
+[ext_resource path="res://icon.png" type="Texture" id=14]
+[ext_resource path="res://timer_font.tres" type="DynamicFont" id=15]
+[ext_resource path="res://menu/escape_menu.tscn" type="PackedScene" id=16]
 
 [node name="Shop" type="Control"]
 anchor_left = 0.0
@@ -47,7 +50,16 @@ bus = "Master"
 
 [node name="IngredientClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = 0.0
+volume_db = -5.0
+pitch_scale = 1.0
+autoplay = false
+stream_paused = false
+mix_target = 0
+bus = "Master"
+
+[node name="IngredientClick2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -10.0
 pitch_scale = 1.0
 autoplay = false
 stream_paused = false
@@ -79,7 +91,7 @@ flat = false
 align = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="NextOrder"]
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 volume_db = -5.0
 pitch_scale = 1.0
 autoplay = false
@@ -113,7 +125,7 @@ flat = false
 align = 1
 
 [node name="BadSound" type="AudioStreamPlayer" parent="BrewButton"]
-stream = ExtResource( 5 )
+stream = ExtResource( 6 )
 volume_db = -5.0
 pitch_scale = 1.0
 autoplay = false
@@ -122,7 +134,7 @@ mix_target = 0
 bus = "Master"
 
 [node name="GoodSound" type="AudioStreamPlayer" parent="BrewButton"]
-stream = ExtResource( 6 )
+stream = ExtResource( 7 )
 volume_db = -5.0
 pitch_scale = 1.0
 autoplay = false
@@ -145,7 +157,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/normal_font = ExtResource( 7 )
+custom_fonts/normal_font = ExtResource( 8 )
 bbcode_enabled = true
 bbcode_text = ""
 visible_characters = -1
@@ -178,13 +190,17 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 9 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
 expand = true
 stretch_mode = 3
 
-[node name="Book" parent="." instance=ExtResource( 10 )]
+[node name="Clicker" parent="BookButton" instance=ExtResource( 11 )]
+stream = ExtResource( 12 )
+volume_db = -10.0
+
+[node name="Book" parent="." instance=ExtResource( 13 )]
 visible = false
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -206,7 +222,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 11 )
+texture = ExtResource( 14 )
 stretch_mode = 0
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -241,7 +257,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 7 )
+custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Someone's banging on the window. Time to open shop!
 Press \"Next customer\" when ready...
@@ -267,14 +283,14 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 12 )
+custom_fonts/font = ExtResource( 15 )
 text = "--"
 align = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="EscapeMenu" parent="." instance=ExtResource( 13 )]
+[node name="EscapeMenu" parent="." instance=ExtResource( 16 )]
 visible = false
 mouse_filter = 0
 

@@ -64,6 +64,7 @@ func handle_add_ingredient(ingredient_node):
 			return
 			
 	$IngredientClick.play()
+	$IngredientClick2.play()
 	
 	set_money(money - 10)
 	
