@@ -66,6 +66,9 @@ func handle_add_ingredient(ingredient_node):
 	$IngredientClick.play()
 	$IngredientClick2.play()
 	
+	if ingredient_node.has_node("AudioStreamPlayer"):
+		ingredient_node.get_node("AudioStreamPlayer").play()
+	
 	set_money(money - 10)
 	
 	var message = preload("res://shop/message.tscn").instance()

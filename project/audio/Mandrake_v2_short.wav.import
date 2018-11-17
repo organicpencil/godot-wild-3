@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Mandrake_v2_short.wav-0039b0b00328b6698b2810a4bcb6768f.sample"
+
+[deps]
+
+source_file="res://audio/Mandrake_v2_short.wav"
+dest_files=[ "res://.import/Mandrake_v2_short.wav-0039b0b00328b6698b2810a4bcb6768f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

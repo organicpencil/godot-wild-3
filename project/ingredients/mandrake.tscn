@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://ingredients/mandrake.gd" type="Script" id=1]
 [ext_resource path="res://ingredients/mandrake.png" type="Texture" id=2]
 [ext_resource path="res://ingredients/mandrake_hoover.png" type="Texture" id=3]
+[ext_resource path="res://audio/Mandrake_v2_short.wav" type="AudioStream" id=4]
 
 [node name="Mandrake" type="Control"]
 anchor_left = 0.0
@@ -39,4 +40,13 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 2 )
 texture_hover = ExtResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -12.0
+pitch_scale = 1.0
+autoplay = false
+stream_paused = false
+mix_target = 0
+bus = "Master"
 
