@@ -9,4 +9,3 @@ func _ready():
 func start_game():
 	$Menu.hide()
 	Global.emit_signal("start_game")
-	$Menu/Begin/AudioStreamPlayer.play()

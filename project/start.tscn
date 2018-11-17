@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://start.gd" type="Script" id=1]
 [ext_resource path="res://shop/bg.png" type="Texture" id=2]
@@ -13,8 +13,9 @@
 [ext_resource path="res://shop/mixer.png" type="Texture" id=11]
 [ext_resource path="res://title_font.tres" type="DynamicFont" id=12]
 [ext_resource path="res://body_font.tres" type="DynamicFont" id=13]
-[ext_resource path="res://menu/audio_button.tscn" type="PackedScene" id=14]
-[ext_resource path="res://shop/shop.tscn" type="PackedScene" id=15]
+[ext_resource path="res://audio/clicker.tscn" type="PackedScene" id=14]
+[ext_resource path="res://menu/audio_button.tscn" type="PackedScene" id=15]
+[ext_resource path="res://shop/shop.tscn" type="PackedScene" id=16]
 
 [node name="Start" type="Control"]
 anchor_left = 0.0
@@ -217,14 +218,7 @@ text = "Begin"
 flat = false
 align = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Menu/Begin"]
-stream = null
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-stream_paused = false
-mix_target = 0
-bus = "Master"
+[node name="Clicker" parent="Menu/Begin" instance=ExtResource( 14 )]
 
 [node name="Exit" type="Button" parent="Menu"]
 anchor_left = 0.0
@@ -250,13 +244,13 @@ text = "Exit"
 flat = false
 align = 1
 
-[node name="AudioButton" parent="Menu" instance=ExtResource( 14 )]
+[node name="AudioButton" parent="Menu" instance=ExtResource( 15 )]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -117.0
 margin_right = 0.0
 
-[node name="Shop" parent="." instance=ExtResource( 15 )]
+[node name="Shop" parent="." instance=ExtResource( 16 )]
 visible = false
 potion_sprite = NodePath("../Background/Potion")
 stop_hover = NodePath("../StopHover")

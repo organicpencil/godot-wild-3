@@ -50,6 +50,8 @@ func handle_add_ingredient(ingredient_id, mix_color):
 		if child.ingredient_id == ingredient_id:
 			return
 			
+	$IngredientClick.play()
+	
 	# Replaced with color mixing
 	var node
 	match ingredient_id:
@@ -163,6 +165,8 @@ func handle_timeout():
 	
 	stop_hover.show()
 	witch.get_node("AnimationPlayer").play("confused")
+	
+	$Timeout.play()
 	
 func game_over():
 	$ColorRect/Label.text = 'Looks like that\'s everyone!\nSatisfied customers: %d/%d\nWasted ingredients: %d' % \
