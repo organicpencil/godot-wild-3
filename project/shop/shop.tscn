@@ -25,6 +25,8 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 1 )
 potion_sprite = null
+stop_hover = null
+witch = null
 
 [node name="Timer" type="Timer" parent="."]
 process_mode = 1
@@ -86,7 +88,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Brew!"
+text = "Serve"
 flat = false
 align = 1
 

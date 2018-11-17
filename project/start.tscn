@@ -95,6 +95,7 @@ margin_bottom = 319.0
 position = Vector2( 0, -135 )
 
 [node name="Potion" type="Sprite" parent="Background"]
+visible = false
 position = Vector2( 408.667, 91 )
 texture = ExtResource( 10 )
 

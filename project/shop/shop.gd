@@ -86,6 +86,7 @@ func handle_nextorder_pressed():
 	$NextOrder/AudioStreamPlayer.play()
 	$NextOrder.hide()
 	potion_sprite.modulate = Color(1, 1, 1, 1)
+	potion_sprite.show()
 	witch.get_node("AnimationPlayer").play("normal")
 	
 	current_order = orders.get_next_order()
@@ -113,6 +114,7 @@ func handle_brew_pressed():
 		node.queue_free()
 		
 	$BrewButton.hide()
+	potion_sprite.modulate = Color(1, 1, 1, 1)
 	
 	var message = preload("res://shop/message.tscn").instance()
 	if score == current_order['ingredients'].size():
@@ -132,6 +134,7 @@ func handle_brew_pressed():
 			
 		stop_hover.show()
 		witch.get_node("AnimationPlayer").play("happy")
+		potion_sprite.hide()
 		
 	else:
 		# Bad potion
