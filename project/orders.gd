@@ -25,7 +25,7 @@ var orders = []
 var current_order = 0
 
 func _init():
-	orders.append({	'message': "An angry duck violently charges in, demanding something that will aid with floatation.",
+	orders.append({	'message': "An angry duck violently waddles in, demanding something that will aid with floatation.",
 					'ingredients': [Global.ING_DANDELION, Global.ING_SUNFLOWERSEED],
 					'good_message': "Excellent!", # Could use a generic message instead
 					'bad_message': "The duck is not pleased. Try again.", # Could use a generic message instead

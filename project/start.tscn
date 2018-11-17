@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://start.gd" type="Script" id=1]
 [ext_resource path="res://shop/bg.png" type="Texture" id=2]
@@ -9,8 +9,10 @@
 [ext_resource path="res://ingredients/mushroom.tscn" type="PackedScene" id=7]
 [ext_resource path="res://ingredients/sunflower_seed.tscn" type="PackedScene" id=8]
 [ext_resource path="res://shop/witch.tscn" type="PackedScene" id=9]
-[ext_resource path="res://menu/audio_button.tscn" type="PackedScene" id=10]
-[ext_resource path="res://shop/shop.tscn" type="PackedScene" id=11]
+[ext_resource path="res://title_font.tres" type="DynamicFont" id=10]
+[ext_resource path="res://body_font.tres" type="DynamicFont" id=11]
+[ext_resource path="res://menu/audio_button.tscn" type="PackedScene" id=12]
+[ext_resource path="res://shop/shop.tscn" type="PackedScene" id=13]
 
 [node name="Start" type="Control"]
 anchor_left = 0.0
@@ -120,23 +122,48 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="Label" type="Label" parent="Menu"]
+[node name="Title" type="Label" parent="Menu"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 50.0
-margin_top = 140.0
-margin_right = 208.0
-margin_bottom = 188.0
-rect_scale = Vector2( 2, 2 )
+margin_top = 39.0
+margin_right = 330.0
+margin_bottom = 88.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "<Brief explanation of mechanics, backstory, or something>"
+custom_fonts/font = ExtResource( 10 )
+text = "-Game Title-"
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Instructions" type="Label" parent="Menu"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 50.0
+margin_top = 139.0
+margin_right = 550.0
+margin_bottom = 248.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 11 )
+text = "How to play:
+1. Determine customer needs
+2. Add ingredients
+3. Brew the correct potion before times runs out"
 autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
@@ -148,8 +175,9 @@ anchor_top = 0.5
 anchor_right = 0.0
 anchor_bottom = 0.5
 margin_left = 50.0
-margin_top = -50.0
+margin_top = -41.0
 margin_right = 247.0
+margin_bottom = 9.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -198,12 +226,12 @@ text = "Exit"
 flat = false
 align = 1
 
-[node name="AudioButton" parent="Menu" instance=ExtResource( 10 )]
+[node name="AudioButton" parent="Menu" instance=ExtResource( 12 )]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -117.0
 margin_right = 0.0
 
-[node name="Shop" parent="." instance=ExtResource( 11 )]
+[node name="Shop" parent="." instance=ExtResource( 13 )]
 visible = false
 

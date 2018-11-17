@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://shop/shop.gd" type="Script" id=1]
 [ext_resource path="res://audio/New_Order.wav" type="AudioStream" id=2]
@@ -8,7 +8,9 @@
 [ext_resource path="res://shop/book5.png" type="Texture" id=6]
 [ext_resource path="res://shop/book.tscn" type="PackedScene" id=7]
 [ext_resource path="res://icon.png" type="Texture" id=8]
-[ext_resource path="res://menu/escape_menu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://body_font.tres" type="DynamicFont" id=9]
+[ext_resource path="res://timer_font.tres" type="DynamicFont" id=10]
+[ext_resource path="res://menu/escape_menu.tscn" type="PackedScene" id=11]
 
 [node name="Shop" type="Control"]
 anchor_left = 0.0
@@ -34,9 +36,9 @@ anchor_left = 0.0
 anchor_top = 1.0
 anchor_right = 0.0
 anchor_bottom = 1.0
-margin_left = 569.0
+margin_left = 650.0
 margin_top = -70.0
-margin_right = 680.0
+margin_right = 761.0
 margin_bottom = -8.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -162,8 +164,8 @@ anchor_top = 1.0
 anchor_right = 0.0
 anchor_bottom = 1.0
 margin_left = 78.0
-margin_top = -70.0
-margin_right = 560.0
+margin_top = -100.0
+margin_right = 640.0
 margin_bottom = -8.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -180,16 +182,17 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 472.0
-margin_bottom = 22.0
+margin_right = 555.0
+margin_bottom = 89.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Hi there!
+text = "Someone's banging on the window. Time to open shop!
 Press \"Next customer\" when ready...
 Although it might be a good idea to study first (top left)"
 autowrap = true
@@ -203,24 +206,24 @@ anchor_left = 1.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 0.0
-margin_left = -74.0
-margin_top = 10.0
-margin_right = -58.0
-margin_bottom = 24.0
-rect_scale = Vector2( 4, 4 )
+margin_left = -84.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = 92.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = ExtResource( 10 )
 text = "--"
 align = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="EscapeMenu" parent="." instance=ExtResource( 9 )]
+[node name="EscapeMenu" parent="." instance=ExtResource( 11 )]
 visible = false
 mouse_filter = 0
 
@@ -240,4 +243,29 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
+
+[node name="MenuButton" type="Button" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -67.0
+margin_top = -25.0
+margin_right = 67.0
+margin_bottom = 25.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Return to menu"
+flat = false
+align = 1
 

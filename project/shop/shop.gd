@@ -3,6 +3,9 @@ extends Control
 var orders
 var current_order = null
 
+var satisifed_customers = 0
+var ingredients_wasted = 0
+
 func _ready():
 	orders = preload("res://orders.gd").new()
 	
@@ -12,6 +15,7 @@ func _ready():
 	$BrewButton.connect("pressed", self, "handle_brew_pressed")
 	$BookButton.connect("pressed", self, "handle_bookbutton_pressed")
 	$Timer.connect("timeout", self, "handle_timeout")
+	$MenuButton.connect("pressed", self, "handle_exit_pressed")
 	
 	set_process_input(false)
 	
@@ -24,6 +28,9 @@ func handle_start_game():
 	set_process_input(true)
 	Global.connect("add_ingredient", self, "handle_add_ingredient")
 	Global.connect("remove_ingredient", self, "handle_remove_ingredient")
+	
+func handle_exit_pressed():
+	get_tree().change_scene("res://start.tscn")
 	
 func handle_add_ingredient(ingredient_id):
 	# Active order required before you can start mixing
@@ -75,7 +82,7 @@ func handle_nextorder_pressed():
 	
 func handle_brew_pressed():
 	var score = 0
-	#for node in $ActiveIngredients.get_children():
+	var ingredient_count = get_node("../Background/Active").get_child_count()
 	for node in get_node("../Background/Active").get_children():
 		if node.ingredient_id in current_order['ingredients']:
 			score += 1
@@ -90,15 +97,24 @@ func handle_brew_pressed():
 	if score == current_order['ingredients'].size():
 		# Good potion
 		$Timer.stop()
-		$NextOrder.show()
-		$ColorRect/Label.text = 'Good job! Hit "Next customer" when you\'re ready for another.'
 		message.text = current_order['good_message']
 		current_order = null
 		$BrewButton/GoodSound.play()
+		
+		satisifed_customers += 1
+		
+		if orders.current_order < orders.orders.size():
+			$NextOrder.show()
+			$ColorRect/Label.text = 'Good job! Hit "Next customer" when you\'re ready for another.'
+		else:
+			game_over()
+		
 	else:
 		# Bad potion
 		message.text = current_order['bad_message']
 		$BrewButton/BadSound.play()
+		
+		ingredients_wasted += ingredient_count
 		
 	add_child(message)
 	
@@ -116,6 +132,11 @@ func handle_timeout():
 	message.text = current_order['fail_message']
 	add_child(message)
 	current_order = null
+	
+func game_over():
+	$ColorRect/Label.text = 'Looks like that\'s everyone!\nSatisfied customers: %d/%d\nWasted ingredients: %d' % \
+		[satisifed_customers, orders.orders.size(), ingredients_wasted]
+	$MenuButton.show()
 	
 func _process(delta):
 	if !$Timer.is_stopped():
