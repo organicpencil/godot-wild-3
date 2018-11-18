@@ -25,7 +25,7 @@ var current_order = 0
 
 func _init():
 	normal_orders()
-	#alternative_orders()
+	alternative_orders() # Why not, I could barely make it this far anyway
 	
 func normal_orders():
 	orders.append({	'message': "A villager steps up, complaining about insomina.",
@@ -50,35 +50,35 @@ func normal_orders():
 					})
 					
 	orders.append({	'message': "A local ranger asks you to poison some arrows.",
-					'ingredients': [Global.ING_MANDRAKE, Global.ING_MUSHROOM],
+					'ingredients': [Global.ING_MUSHROOM],
 					'good_message': "Excellent!", # Could use a generic message instead
 					'bad_message': "That doesn't smell right.", # Could use a generic message instead
 					'fail_message': "The ranger leaves before you can finish." # Could use a generic message instead
 					})
 					
-	orders.append({	'message': "A local warrior requires a strength and resistance boost for an upcoming dragon-slaying event.",
+	orders.append({	'message': "A local warrior requires a strength and stamina boost for an upcoming boss event.",
 					'ingredients': [Global.ING_FEATHER, Global.ING_DANDELION],
 					'good_message': "Excellent!", # Could use a generic message instead
 					'bad_message': "That doesn't smell right.", # Could use a generic message instead
 					'fail_message': "The warrior leaves before you can finish." # Could use a generic message instead
 					})
 					
-	orders.append({	'message': "A worried person tells you their mother is suffering from hypothermia.",
+	orders.append({	'message': "The next client tells you their mother is suffering from hypothermia.",
 					'ingredients': [Global.ING_SUNFLOWERSEED, Global.ING_MANDRAKE],
 					'good_message': "Excellent!", # Could use a generic message instead
 					'bad_message': "That doesn't smell right.", # Could use a generic message instead
 					'fail_message': "The person walks out. \"I'll just take her to the doctor.\"" # Could use a generic message instead
 					})
 					
-	orders.append({	'message': "A local druid wants to tame a baby dragon and needs to make sure it won't attack in the process.",
+	orders.append({	'message': "The neighborhood dragon-catcher is having trouble finding good homes. They keep wanting to bite people.",
 					'ingredients': [Global.ING_DANDELION, Global.ING_SUNFLOWERSEED],
 					'good_message': "Excellent!", # Could use a generic message instead
 					'bad_message': "That doesn't smell right.", # Could use a generic message instead
-					'fail_message': "The druid walks out, grasping is club. \"Look's like I'll have to do this the old-fashioned way.\"" # Could use a generic message instead
+					'fail_message': "The druid grasps its club and walks out." # Could use a generic message instead
 					})
 	
 func alternative_orders():
-	orders.append({	'message': "An angry duck violently waddles in, demanding something that will aid with floatation.",
+	orders.append({	'message': "An angry duck violently waddles in, demanding something that will help it float.",
 					'ingredients': [Global.ING_DANDELION, Global.ING_SUNFLOWERSEED],
 					'good_message': "Excellent!", # Could use a generic message instead
 					'bad_message': "The duck is not pleased. Try again.", # Could use a generic message instead
@@ -86,11 +86,18 @@ func alternative_orders():
 					})
 					
 	orders.append({	'message': 'A huge rat enters the shop. It\'s walking half-sideways while compulsively scratching its cheek. "Hey man... you got something for me?"',
-				'ingredients': [Global.ING_MUSHROOM],
-				'good_message': "Excellent!", # Could use a generic message instead
-				'bad_message': "What? No! Something *else*", # Could use a generic message instead
-				'fail_message': "The cops show up and take the rat before you can finish." # Could use a generic message instead
+					'ingredients': [Global.ING_MUSHROOM],
+					'good_message': "Excellent!", # Could use a generic message instead
+					'bad_message': "What? No! Something *else*", # Could use a generic message instead
+					'fail_message': "The cops show up and take the rat before you can finish." # Could use a generic message instead
 				})
+				
+	orders.append({	'message': "One final customer enters the store. \"Just give me everything you have.\".",
+					'ingredients': [Global.ING_DANDELION, Global.ING_SUNFLOWERSEED, Global.ING_FEATHER, Global.ING_MANDRAKE, Global.ING_MUSHROOM],
+					'good_message': "Excellent!", # Could use a generic message instead
+					'bad_message': "That doesn't look strong enough.", # Could use a generic message instead
+					'fail_message': "The client is surprised that you were unable to fill this order." # Could use a generic message instead
+					})
 
 func get_next_order():
 	"""
