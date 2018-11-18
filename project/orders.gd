@@ -28,7 +28,7 @@ func _init():
 	alternative_orders() # Why not, I could barely make it this far anyway
 	
 func normal_orders():
-	orders.append({	'message': "A villager steps up, complaining about insomina.",
+	orders.append({	'message': "A villager steps up, complaining about insomnia.",
 					'ingredients': [Global.ING_MANDRAKE],
 					'good_message': "Excellent!", # Could use a generic message instead
 					'bad_message': "That doesn't smell right.", # Could use a generic message instead
