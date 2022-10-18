@@ -1,7 +1,7 @@
 extends TextureRect
 
-var current_page = 1
-var active = true
+var current_page := 1
+var active := false
 
 func _ready():
 	active = visible
