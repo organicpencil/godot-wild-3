@@ -186,7 +186,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 8 )
 text = "Someone's banging on the window. Time to open shop!
 Press \"Next customer\" when ready...
-Although it might be a good idea to study first (top left)"
+It might be a good idea to study first (top left)."
 autowrap = true
 
 [node name="ActiveIngredients" type="HBoxContainer" parent="."]
