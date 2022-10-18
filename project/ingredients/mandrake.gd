@@ -6,7 +6,7 @@ const TEXTURE_SAD_HOVER = preload("res://ingredients/mandrake_hoover.png")
 func _init():
 	ingredient_id = Global.ING_MANDRAKE
 	mix_color = Color(0, 1, 0, 1)
-	
+
 func handle_button_pressed():
 	.handle_button_pressed()
 	if !active_mode:

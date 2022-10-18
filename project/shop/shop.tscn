@@ -23,112 +23,54 @@
 [ext_resource path="res://menu/escape_menu.tscn" type="PackedScene" id=21]
 
 [node name="Shop" type="Control"]
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
 margin_top = -2.0
 margin_right = 2.0
 margin_bottom = -2.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 script = ExtResource( 1 )
 potion_sprite = null
 stop_hover = null
 witch = null
 
 [node name="Timer" type="Timer" parent="."]
-process_mode = 1
-wait_time = 1.0
 one_shot = true
-autostart = false
 
 [node name="Timeout" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-stream_paused = false
-mix_target = 0
-bus = "Master"
 
 [node name="IngredientClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -5.0
-pitch_scale = 1.0
-autoplay = false
-stream_paused = false
-mix_target = 0
-bus = "Master"
 
 [node name="IngredientClick2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -10.0
-pitch_scale = 1.0
-autoplay = false
-stream_paused = false
-mix_target = 0
-bus = "Master"
 
 [node name="NextOrder" type="TextureButton" parent="."]
-editor/display_folded = true
-anchor_left = 0.0
 anchor_top = 1.0
-anchor_right = 0.0
 anchor_bottom = 1.0
 margin_left = 650.0
 margin_top = -70.0
 margin_right = 761.0
 margin_bottom = -8.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
 texture_normal = ExtResource( 5 )
 texture_hover = ExtResource( 6 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="NextOrder"]
 stream = ExtResource( 7 )
 volume_db = -5.0
-pitch_scale = 1.0
-autoplay = false
-stream_paused = false
-mix_target = 0
-bus = "Master"
 
 [node name="Label" type="Label" parent="NextOrder"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_top = 3.0
 margin_right = 236.0
 margin_bottom = 59.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 custom_fonts/font = ExtResource( 8 )
 text = "Next Customer"
 align = 1
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
 [node name="BrewButton" type="TextureButton" parent="."]
 visible = false
@@ -140,17 +82,6 @@ margin_left = -152.0
 margin_top = -73.0
 margin_right = -15.0
 margin_bottom = -12.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
 texture_normal = ExtResource( 9 )
 texture_hover = ExtResource( 10 )
 expand = true
@@ -158,92 +89,35 @@ expand = true
 [node name="BadSound" type="AudioStreamPlayer" parent="BrewButton"]
 stream = ExtResource( 11 )
 volume_db = -5.0
-pitch_scale = 1.0
-autoplay = false
-stream_paused = false
-mix_target = 0
-bus = "Master"
 
 [node name="GoodSound" type="AudioStreamPlayer" parent="BrewButton"]
 stream = ExtResource( 12 )
 volume_db = -5.0
-pitch_scale = 1.0
-autoplay = false
-stream_paused = false
-mix_target = 0
-bus = "Master"
 
 [node name="Label" type="Label" parent="BrewButton"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 2.0
 margin_top = 4.0
 margin_right = 140.0
 margin_bottom = 66.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
 custom_fonts/font = ExtResource( 8 )
 text = "Brew"
 align = 1
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
 [node name="MoneyLabel" type="RichTextLabel" parent="."]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 20.0
 margin_top = 170.0
 margin_right = 315.0
 margin_bottom = 195.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 custom_fonts/normal_font = ExtResource( 8 )
 bbcode_enabled = true
-bbcode_text = ""
-visible_characters = -1
-percent_visible = 1.0
-meta_underlined = true
-tab_size = 4
-text = ""
 scroll_active = false
-scroll_following = false
-selection_enabled = false
-override_selected_font_color = false
 
 [node name="BookButton" type="TextureButton" parent="."]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 131.0
 margin_bottom = 157.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
 texture_normal = ExtResource( 13 )
 texture_pressed = ExtResource( 13 )
 texture_hover = ExtResource( 14 )
@@ -263,127 +137,68 @@ margin_bottom = 230.0
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
-anchor_left = 0.0
 anchor_top = 1.0
-anchor_right = 0.0
 anchor_bottom = 1.0
 margin_left = 8.0
 margin_top = -72.0
 margin_right = 72.0
 margin_bottom = -8.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 texture = ExtResource( 18 )
-stretch_mode = 0
 
 [node name="ColorRect" type="ColorRect" parent="."]
-anchor_left = 0.0
 anchor_top = 1.0
-anchor_right = 0.0
 anchor_bottom = 1.0
 margin_left = 78.0
 margin_top = -100.0
 margin_right = 640.0
 margin_bottom = -8.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-color = Color( 1, 1, 1, 1 )
 
 [node name="Label" type="Label" parent="ColorRect"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 555.0
 margin_bottom = 89.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Someone's banging on the window. Time to open shop!
 Press \"Next customer\" when ready...
 Although it might be a good idea to study first (top left)"
 autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 anchor_left = 1.0
-anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -116.0
 margin_right = -1.0
 margin_bottom = -486.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 texture = ExtResource( 19 )
 expand = true
-stretch_mode = 0
 
 [node name="TimeLabel" type="Label" parent="."]
 modulate = Color( 0.113725, 0.113725, 0.113725, 1 )
 anchor_left = 1.0
-anchor_top = 0.0
 anchor_right = 1.0
-anchor_bottom = 0.0
 margin_left = -87.0
 margin_top = 12.0
 margin_right = -19.0
 margin_bottom = 88.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 20 )
 text = "--"
 align = 2
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
 [node name="EscapeMenu" parent="." instance=ExtResource( 21 )]
 visible = false
 mouse_filter = 0
 
 [node name="ActiveIngredients" type="HBoxContainer" parent="."]
-anchor_left = 0.0
 anchor_top = 1.0
-anchor_right = 0.0
 anchor_bottom = 1.0
 margin_left = 650.0
 margin_top = -190.0
 margin_right = 690.0
 margin_bottom = -150.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
 
 [node name="MenuButton" type="Button" parent="."]
 visible = false
@@ -395,18 +210,4 @@ margin_left = -67.0
 margin_top = -25.0
 margin_right = 67.0
 margin_bottom = 25.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
 text = "Return to menu"
-flat = false
-align = 1
-
