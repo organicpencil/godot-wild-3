@@ -14,7 +14,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Poison Craft (Godot 3.1)"
+config/name="Poison Craft"
 run/main_scene="res://start.tscn"
 config/icon="res://icon.png"
 
