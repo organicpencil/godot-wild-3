@@ -174,8 +174,9 @@ valign = 2
 [node name="AudioButton" parent="Menu" instance=ExtResource( 20 )]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -117.0
-margin_right = 0.0
+margin_left = -68.0
+margin_right = -4.0
+focus_mode = 0
 
 [node name="Shop" parent="." instance=ExtResource( 21 )]
 visible = false
