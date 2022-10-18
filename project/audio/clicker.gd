@@ -4,6 +4,6 @@ extends AudioStreamPlayer
 
 func _ready():
 	get_parent().connect("pressed", self, "handle_button_pressed")
-	
+
 func handle_button_pressed():
 	play()
