@@ -37,7 +37,6 @@ func set_money(amount):
 		moneycolor = "red"
 
 	$MoneyLabel.bbcode_text = "Cash: [color=%s]%s[/color]" % [moneycolor, str(money)]
-	print($MoneyLabel.text)
 
 func handle_start_game():
 	show()

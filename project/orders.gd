@@ -118,7 +118,7 @@ func get_next_order():
 		#order['message'] = Translation.get_message(order['message_key']) # Translations
 		current_order += 1
 	else:
-		print("No more orders...")
+		pass
 
 	return order
 
