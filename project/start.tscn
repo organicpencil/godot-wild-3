@@ -26,6 +26,9 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Background" type="Control" parent="."]
 anchor_left = 0.5
@@ -175,7 +178,9 @@ valign = 2
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -68.0
+margin_top = 4.0
 margin_right = -4.0
+margin_bottom = 68.0
 focus_mode = 0
 
 [node name="Shop" parent="." instance=ExtResource( 21 )]

@@ -20,20 +20,16 @@
 [ext_resource path="res://icon.png" type="Texture" id=18]
 [ext_resource path="res://shop/clock.png" type="Texture" id=19]
 [ext_resource path="res://timer_font.tres" type="DynamicFont" id=20]
-[ext_resource path="res://menu/escape_menu.tscn" type="PackedScene" id=21]
+[ext_resource path="res://menu/escape_menu/escape_menu.tscn" type="PackedScene" id=21]
 
 [node name="Shop" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 2.0
-margin_top = -2.0
-margin_right = 2.0
-margin_bottom = -2.0
 mouse_filter = 2
 script = ExtResource( 1 )
-potion_sprite = null
-stop_hover = null
-witch = null
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
@@ -48,6 +44,33 @@ volume_db = -5.0
 [node name="IngredientClick2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -10.0
+
+[node name="Clock" type="TextureRect" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -132.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 19 )
+expand = true
+
+[node name="TimeLabel" type="Label" parent="Clock"]
+modulate = Color( 0.113725, 0.113725, 0.113725, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -19.0
+margin_top = -41.0
+margin_right = 19.0
+margin_bottom = 35.0
+grow_horizontal = 2
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 20 )
+text = "--"
+align = 1
 
 [node name="NextOrder" type="TextureButton" parent="."]
 anchor_top = 1.0
@@ -165,33 +188,6 @@ Press \"Next customer\" when ready...
 Although it might be a good idea to study first (top left)"
 autowrap = true
 
-[node name="TextureRect2" type="TextureRect" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -116.0
-margin_right = -1.0
-margin_bottom = -486.0
-texture = ExtResource( 19 )
-expand = true
-
-[node name="TimeLabel" type="Label" parent="."]
-modulate = Color( 0.113725, 0.113725, 0.113725, 1 )
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -87.0
-margin_top = 12.0
-margin_right = -19.0
-margin_bottom = 88.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 20 )
-text = "--"
-align = 2
-
-[node name="EscapeMenu" parent="." instance=ExtResource( 21 )]
-visible = false
-mouse_filter = 0
-
 [node name="ActiveIngredients" type="HBoxContainer" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -211,3 +207,16 @@ margin_top = -25.0
 margin_right = 67.0
 margin_bottom = 25.0
 text = "Return to menu"
+
+[node name="EscapeMenu" parent="." instance=ExtResource( 21 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -56.0
+margin_top = -22.0
+margin_right = 56.0
+margin_bottom = 22.0
+mouse_filter = 0
+book = NodePath("../Book")

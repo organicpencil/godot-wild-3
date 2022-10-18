@@ -45,6 +45,7 @@ tracks/1/keys = {
 }
 
 [node name="Book" type="TextureRect"]
+pause_mode = 2
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -332.0

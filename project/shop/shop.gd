@@ -39,10 +39,6 @@ func set_money(amount):
 	$MoneyLabel.bbcode_text = "Currency units: [color=%s]%s[/color]" % [moneycolor, str(money)]
 	print($MoneyLabel.text)
 
-func _input(event):
-	if event.is_action_pressed("escape"):
-		$EscapeMenu.visible = !$EscapeMenu.visible
-
 func handle_start_game():
 	show()
 	set_process_input(true)
@@ -220,8 +216,8 @@ func game_over():
 func _process(delta):
 	if !$Timer.is_stopped():
 		var time_left = int($Timer.time_left)
-		$TimeLabel.text = "%d" % time_left
+		$Clock/TimeLabel.text = "%d" % time_left
 		if time_left > 9:
-			$TimeLabel.modulate = Color(0, 1, 0, 1)
+			$Clock/TimeLabel.modulate = Color(0, 1, 0, 1)
 		else:
-			$TimeLabel.modulate = Color(1, 0, 0, 1)
+			$Clock/TimeLabel.modulate = Color(1, 0, 0, 1)
